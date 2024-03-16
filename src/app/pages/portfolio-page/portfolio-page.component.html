@@ -1,1 +1,19 @@
-<p>portfolio-page works!</p>
+<app-nav />
+<section class="container mx-auto">
+    @if (true) {
+    <div
+      class="p-6 py-20 h-full flex items-center justify-center flex-col gap-5"
+    >
+      <p>Click on the button below to add courses</p>
+      <button
+        class="bg-purple-400 p-3 rounded-md text-slate-50 hover:bg-purple-500"
+       (click)="openModal()"
+      >
+        Add Course
+      </button>
+    </div>
+    }
+</section>
+@if (isShowModal) {
+    <app-add-course-modal [showModal]="isShowModal" (closeModalEvent)="closeModal()" (coursesAdded)="addCourse($event)" />
+}
