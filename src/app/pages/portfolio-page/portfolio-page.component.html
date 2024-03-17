@@ -1,6 +1,6 @@
 <app-nav />
 <section class="container mx-auto">
-    @if (courses.length) {
+    @if (!courses.length) {
     <div
       class="p-6 py-20 h-full flex items-center justify-center flex-col gap-5"
     >
@@ -19,42 +19,53 @@
           <thead class="border-b border-neutral-200 bg-[#332D2D] font-medium text-white font-mono text-left">
               <tr class=" uppercase ">
                   <th class="px-2 py-3 tracking-wider">#</th>
-                  <th class="px-6 py-3 tracking-wider">Name</th>
-                  <th class="px-6 py-3 tracking-wider">Email</th>
-                  <th class="px-6 py-3 tracking-wider">Role</th>
-                  <th class="px-6 py-3 tracking-wider">Status</th>
+                  <th class="px-6 py-3 tracking-wider">Course Name</th>
+                  <th class="px-6 py-3 tracking-wider">Course Code</th>
+                  <th class="px-6 py-3 tracking-wider">Course Unit</th>
+                  <th class="px-6 py-3 tracking-wider">Course Score</th>
+                  <th class="px-6 py-3 tracking-wider">Course Grade</th>
                   <th class="px-6 py-3 tracking-wider">Action</th>
               </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
+            @for (course of courses; track i; let i= $index) {
               <tr class="transition duration-300 ease-in-out hover:bg-neutral-100">
-                  <td class="px-2 py-4 whitespace-nowrap">1</td>
-                  <td class="px-6 py-4 whitespace-nowrap">Jane Doe</td>
-                  <td class="px-6 py-4 whitespace-nowrap">janeexx.com</td>
-                  <td class="px-6 py-4 whitespace-nowrap">Admin</td>
+                  <td class="px-2 py-4 whitespace-nowrap">{{i+1}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">{{course.name}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">{{course.code}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">{{course.unit}}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">{{course.score}}</td>
                   <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Active</span>
+                      <span 
+                        class="px-3 inline-flex leading-5 font-semibold rounded-full "
+                        [ngClass]="{
+                          'text-green-600 bg-green-100': course.grade==='A', 
+                          'text-blue-600 bg-blue-100': course.grade==='B', 
+                          'text-purple-600 bg-purple-100': course.grade==='C',
+                          'text-yellow-600 bg-yellow-100': course.grade==='D',
+                          'text-orange-600 bg-orange-100': course.grade==='E',
+                          'text-red-600 bg-red-100': course.grade==='F',
+                          }"
+                        >{{course.grade}}
+                      </span>
                   </td>
                   <td class="px-6 py-4 whitespace-nowrap">
                       <button class="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
                       <button class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
                   </td>
               </tr>
-              <tr class="transition duration-300 ease-in-out hover:bg-neutral-100">
-                  <td class="px-2 py-4 whitespace-nowrap">1</td>
-                  <td class="px-6 py-4 whitespace-nowrap">John Doe</td>
-                  <td class="px-6 py-4 whitespace-nowrap">johnexx.com</td>
-                  <td class="px-6 py-4 whitespace-nowrap">User</td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                      <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Inactive</span>
-                  </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                      <button class="px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-500 focus:outline-none focus:shadow-outline-blue active:bg-blue-600 transition duration-150 ease-in-out">Edit</button>
-                      <button class="ml-2 px-4 py-2 font-medium text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:shadow-outline-red active:bg-red-600 transition duration-150 ease-in-out">Delete</button>
-                  </td>
-              </tr>
+            }
+              
           </tbody>
       </table>
+      </div>
+      <div class="flex mt-5 items-center justify-center">
+        <button
+          class="bg-purple-400 p-3 rounded-md text-slate-50 shadow-lg"
+          (click)="openModal()"
+        >
+          Add Course
+        </button>
       </div>
     }
 </section>
