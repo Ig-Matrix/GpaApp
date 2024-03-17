@@ -3,12 +3,13 @@ import { NavComponent } from '../../components/portfolio/nav/nav.component';
 import { AddCourseModalComponent } from '../../components/add-course-modal/add-course-modal.component';
 import { Course } from '../../models/interfaces/Course';
 import { NgClass } from '@angular/common';
-import { ProgressComponent } from '../../components/progress/progress.component';
+import { ProgressComponent } from '../../components/portfolio/progress/progress.component';
+import { EditCourseModalComponent } from '../../components/portfolio/edit-course-modal/edit-course-modal.component';
 
 @Component({
   selector: 'app-portfolio-page',
   standalone: true,
-  imports: [NavComponent, AddCourseModalComponent, NgClass, ProgressComponent],
+  imports: [NavComponent, AddCourseModalComponent, NgClass, ProgressComponent, EditCourseModalComponent],
   templateUrl: './portfolio-page.component.html',
   styleUrl: './portfolio-page.component.css',
 })
