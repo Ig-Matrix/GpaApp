@@ -9,7 +9,13 @@ import { EditCourseModalComponent } from '../../components/portfolio/edit-course
 @Component({
   selector: 'app-portfolio-page',
   standalone: true,
-  imports: [NavComponent, AddCourseModalComponent, NgClass, ProgressComponent, EditCourseModalComponent],
+  imports: [
+    NavComponent,
+    AddCourseModalComponent,
+    NgClass,
+    ProgressComponent,
+    EditCourseModalComponent,
+  ],
   templateUrl: './portfolio-page.component.html',
   styleUrl: './portfolio-page.component.css',
 })
@@ -18,8 +24,8 @@ export class PortfolioPageComponent {
   isShowModal: boolean = false;
   isEditModal: boolean = false;
   cgpa!: number;
-  isGpaCalculated: boolean=false
-  editIndex: number | null = null
+  isGpaCalculated: boolean = false;
+  editIndex!: number;
 
   openModal() {
     this.isShowModal = true;
@@ -29,6 +35,11 @@ export class PortfolioPageComponent {
     this.isEditModal = true;
   }
 
+  editCourse(course: Course, index: number) {
+    this.openEditModal();
+    this.editIndex = index;
+    this.courses[index] = { ...course };
+  }
 
   closeEditModal() {
     this.isEditModal = false;
@@ -43,7 +54,14 @@ export class PortfolioPageComponent {
     this.courses.push(course);
     this.isShowModal = false;
     this.cgpa = 0;
-    this.isGpaCalculated=false;
+    this.isGpaCalculated = false;
+  }
+
+  updateCourse(course: Course) {
+    this.courses[this.editIndex].grade = this.calculateGrade(course.score);
+    this.isGpaCalculated = false;
+    this.cgpa = 0;
+    this.editIndex = -1;
   }
 
   calculateGrade(score: number): string {
@@ -63,7 +81,7 @@ export class PortfolioPageComponent {
   }
 
   calculateGpa(): number {
-    this.isGpaCalculated=true;
+    this.isGpaCalculated = true;
     let totalCreditUnits = 0;
     let totalQualityPoints = 0;
 
@@ -86,7 +104,7 @@ export class PortfolioPageComponent {
     if (deleteIndex !== -1) {
       this.courses.splice(deleteIndex, 1);
       this.cgpa = 0;
-      this.isGpaCalculated=false
+      this.isGpaCalculated = false;
     }
   }
 
