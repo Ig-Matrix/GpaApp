@@ -12,24 +12,24 @@ import { NgClass } from '@angular/common';
   styleUrl: './portfolio-page.component.css',
 })
 export class PortfolioPageComponent {
-  courses: Course[]=[]
+  courses: Course[] = [];
   isShowModal: boolean = false;
 
   openModal() {
-    this.isShowModal = true;    
+    this.isShowModal = true;
   }
 
-  closeModal(){
-    this.isShowModal=false;
+  closeModal() {
+    this.isShowModal = false;
   }
 
-  addCourse(course: Course){
-    course.grade= this.calculateGrade(course.score)
-    this.courses.push(course)
-    this.isShowModal=false
+  addCourse(course: Course) {
+    course.grade = this.calculateGrade(course.score);
+    this.courses.push(course);
+    this.isShowModal = false;
   }
 
-  calculateGrade(score: number): string{
+  calculateGrade(score: number): string {
     if (score >= 70) {
       return 'A';
     } else if (score >= 60) {
@@ -42,6 +42,13 @@ export class PortfolioPageComponent {
       return 'E';
     } else {
       return 'F';
+    }
+  }
+
+  deleteCourse(course: Course) {
+    const deleteIndex = this.courses.findIndex((c) => c === course);
+    if (deleteIndex !== -1) {
+      this.courses.splice(deleteIndex, 1);
     }
   }
 }
