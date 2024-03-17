@@ -1,0 +1,11 @@
+@keyframes backward-movement {
+  from {
+    transform: translateX(10px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+.animate-backward {
+  animation: backward-movement 1s ease-in-out infinite;
+}

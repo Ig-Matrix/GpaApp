@@ -1,0 +1,11 @@
+.animate-forward {
+  animation: forward-movement 1s ease-in-out infinite;
+}
+@keyframes forward-movement {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(10px);
+  }
+}
