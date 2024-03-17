@@ -1,8 +1,8 @@
 <div
-  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-30"
   (click)="closeModal($event)"
 >
- <!-- modal content -->
+  <!-- modal content -->
   <div
     class="bg-white rounded-lg shadow-md p-8 w-[86%] sm:w-3/5 md:w-2/4"
     (click)="stopPropagation($event)"
@@ -102,11 +102,11 @@
       <button
         type="button"
         class="bg-indigo-500 text-white px-2 sm:px-4 py-1 sm:py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        (click)="submitCourse($event)"
-        [ngClass]="{'opacity-55 hover:bg-indigo-500': !courseForm.valid}"
+        (click)="saveCourse($event)"
+        [ngClass]="{ 'opacity-55 hover:bg-indigo-500': !courseForm.valid }"
         [disabled]="!courseForm.valid"
       >
-        Add Course
+        Save
       </button>
     </div>
   </div>
