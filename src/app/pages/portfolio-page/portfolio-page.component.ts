@@ -16,11 +16,22 @@ import { EditCourseModalComponent } from '../../components/portfolio/edit-course
 export class PortfolioPageComponent {
   courses: Course[] = [];
   isShowModal: boolean = false;
+  isEditModal: boolean = false;
   cgpa!: number;
   isGpaCalculated: boolean=false
+  editIndex: number | null = null
 
   openModal() {
     this.isShowModal = true;
+  }
+
+  openEditModal() {
+    this.isEditModal = true;
+  }
+
+
+  closeEditModal() {
+    this.isEditModal = false;
   }
 
   closeModal() {
