@@ -44,7 +44,7 @@
           <td class="px-6 py-4 whitespace-nowrap">{{ course.score }}</td>
           <td class="px-6 py-4 whitespace-nowrap">
             <span
-              class="px-3 inline-flex leading-5 font-semibold rounded-full"
+              class="px-3 inline-flex leading-5 font-semibold tex-lg rounded-full"
               [ngClass]="{
                           'text-indigo-600 bg-green-100': course.grade==='A', 
                           'text-blue-500 bg-blue-100': course.grade==='B', 
@@ -84,15 +84,15 @@
     </button>
   </div>
   <div
-    class="border border-double flex items-center flex-wrap gap-y-2 sm:gap-y-0 justify-between p-6 my-3"
+    class="border border-double flex items-center flex-wrap gap-y-2 sm:gap-y-0 justify-between p-6 my-3 parent"
   >
     <button
-      class="bg-slate-200 hover:bg-slate-50 text-blue-500 shadow-md p-3 rounded-md mx-auto"
+      class="bg-slate-200 hover:bg-slate-50 text-blue-500 shadow-md p-3 rounded-md mxauto"
       (click)="calculateGpa()"
     >
       Calculate CGPA
     </button>
-    <div class="flex items-center justify-center relative mx-auto">
+    <div class="flex items-center justify-center relative mxauto">
       <div class="inline-block absolute">
         @if (isGpaCalculated) {
         <p

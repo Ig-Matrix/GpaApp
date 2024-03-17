@@ -1,0 +1,8 @@
+@media screen and (width < 310px) {
+  .mxauto {
+    margin: 0.7rem auto;
+  }
+  .parent {
+    flex-direction: column-reverse;
+  }
+}
