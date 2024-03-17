@@ -11,6 +11,7 @@ import { Course } from '../../models/interfaces/Course';
   styleUrl: './portfolio-page.component.css',
 })
 export class PortfolioPageComponent {
+  courses: Course[]=[]
   isShowModal: boolean = false;
 
   openModal() {
@@ -22,7 +23,7 @@ export class PortfolioPageComponent {
   }
 
   addCourse(course: Course){
-    console.log(course);
+    this.courses.push(course)
     this.isShowModal=false
   }
 }

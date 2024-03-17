@@ -7,6 +7,7 @@
     class="bg-white rounded-lg shadow-md p-8 w-[86%] sm:w-3/5 md:w-2/4"
     (click)="stopPropagation($event)"
   >
+    <!-- modal header -->
     <div
       class="flex justify-between items-center pb-4 border-b border-gray-200"
     >
@@ -32,6 +33,7 @@
         </svg>
       </button>
     </div>
+    <!-- modal form -->
     <form #courseForm="ngForm">
       <div class="mb-4">
         <label for="courseName" class="block text-sm font-medium text-gray-700"
@@ -88,6 +90,7 @@
         />
       </div>
     </form>
+    <!-- modal footer -->
     <div class="flex justify-end space-x-2">
       <button
         type="button"
