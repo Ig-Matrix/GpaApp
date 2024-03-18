@@ -34,20 +34,23 @@
       </button>
     </div>
     <!-- modal form -->
-    <form #courseForm="ngForm">
+    <form [formGroup]="courseForm">
       <div class="mb-4">
         <label for="courseName" class="block text-sm font-medium text-gray-700"
           >Course Name</label
         >
         <input
           type="text"
-          class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          class="w-full px-3 placeholder:italic py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           id="courseName"
-          name="courseName"
-          [(ngModel)]="course.name"
+          name="name"
+          formControlName="name"
           placeholder="enter course name"
           required
         />
+        @if(courseForm.get('name')?.hasError('nameError') && courseForm.get('name')?.touched){
+          <small class="text-red-600">course name must contain only alphabets</small>
+        }
       </div>
       <div class="mb-4">
         <label for="courseCode" class="block text-sm font-medium text-gray-700"
@@ -55,13 +58,16 @@
         >
         <input
           type="text"
-          class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          class="w-full placeholder:italic px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           id="courseCode"
-          name="courseCode"
-          [(ngModel)]="course.code"
+          name="code"
+          formControlName="code"
           placeholder="e.g MTH110"
           required
         />
+        @if(courseForm.get('code')?.hasError('codeError') && courseForm.get('code')?.touched){
+          <small class="text-red-600">course code can contain only numbers, alphabets, hyphen, or underscore</small>
+        }
       </div>
       <div class="mb-4">
         <label for="courseScore" class="block text-sm font-medium text-gray-700"
@@ -69,12 +75,18 @@
         >
         <input
           type="number"
-          class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          class="w-full placeholder:italic px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           id="courseScore"
-          name="courseScore"
-          [(ngModel)]="course.score"
+          name="score"
+          placeholder="e.g 65"
+          formControlName="score"
           required
         />
+          @if(courseForm.get('score')?.hasError('typeError') && courseForm.get('score')?.touched){
+          <small class="text-red-600">must be a number</small>
+        }@else if (courseForm.get('score')?.hasError('rangeError') && courseForm.get('score')?.touched) {
+          <small class="text-red-600">score must be between 0 and 100</small>
+        }
       </div>
       <div class="mb-4">
         <label for="courseUnit" class="block text-sm font-medium text-gray-700"
@@ -82,12 +94,16 @@
         >
         <input
           type="number"
-          class="w-full px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+          class="w-full placeholder:italic px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500"
           id="courseUnit"
-          name="courseUnit"
-          [(ngModel)]="course.unit"
+          placeholder="e.g 3"
+          name="unit"
+         formControlName="unit"
           required
         />
+          @if(courseForm.get('unit')?.hasError('typeError') && courseForm.get('unit')?.touched){
+          <small class="text-red-600">must be a number</small>
+        }
       </div>
     </form>
     <!-- modal footer -->
